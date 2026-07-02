@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import AppShell from "./components/layout/AppShell";
 import { LoginPage } from "./features/auth";
-import Employee from "./features/dashboard/Employee";
+
 import DashboardPage from "./features/dashboard/DashboardPage";
 import AuthLayout from "./components/layout/AuthLayout";
 
