@@ -186,7 +186,7 @@ export default function EmployeeDashboard({ user }: Props) {
             </div>
           </div>
           <button
-            onClick={() => navigate("/report")}
+            onClick={() => navigate("")}
             className="flex items-center gap-2 px-3 py-2 rounded-lg text-white text-xs font-semibold"
             style={{ backgroundColor: LAPO_ORANGE }}
           >
@@ -197,7 +197,7 @@ export default function EmployeeDashboard({ user }: Props) {
           {quickActions.map((action) => (
             <button
               key={action.type}
-              onClick={() => navigate("/report")}
+              onClick={() => navigate("")}
               className="flex items-start gap-3 p-3 rounded-xl border-2 border-gray-100 hover:border-gray-300 hover:shadow-sm transition-all text-left"
             >
               <div
@@ -227,7 +227,7 @@ export default function EmployeeDashboard({ user }: Props) {
           </h2>
 
           <button
-            onClick={() => navigate("/employee/my-cases")}
+            onClick={() => navigate("")}
             className="text-xs font-medium hover:underline"
             style={{ color: LAPO_ORANGE }}
           >
@@ -245,7 +245,7 @@ export default function EmployeeDashboard({ user }: Props) {
             {cases.map((c) => (
               <div
                 key={c.id}
-                onClick={() => navigate(`/employee/cases/${c.id}`)}
+                onClick={() => navigate(``)}
                 className="flex items-center justify-between p-3 rounded-xl border border-gray-100 hover:border-gray-200 hover:bg-gray-50 cursor-pointer transition-all"
               >
                 <div className="flex-1 min-w-0">
