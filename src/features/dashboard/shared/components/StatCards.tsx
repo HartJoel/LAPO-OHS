@@ -9,7 +9,7 @@ interface StatCardsProps {
 const StatCards = ({ stats, className = "" }: StatCardsProps) => {
   return (
     <div
-      className={`grid grid-cols-2 md:grid-cols-4 gap-4 ${className}`}
+      className={`grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-4 ${className}`}
     >
       {stats.map((stat) => (
         <StatCard key={stat.label} stat={stat} />

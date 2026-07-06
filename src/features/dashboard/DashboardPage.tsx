@@ -17,8 +17,11 @@ export default function DashboardPage() {
       return <EmployeeDashboard user={user} />;
     case "hr":
       return <HRDashboard user={user} />;
-    case 'unit_head':    return <UnitHeadDashboard user={user} />;
-    case 'facilities':   return <FacilitiesDashboard user={user} />;
-    case 'system_admin': return <AdminDashboard user={user} />;
+    case "unit_head":
+      return <UnitHeadDashboard user={user} />;
+    case "facilities":
+      return <FacilitiesDashboard user={user} />;
+    case "system_admin":
+      return <AdminDashboard user={user} />;
   }
 }
