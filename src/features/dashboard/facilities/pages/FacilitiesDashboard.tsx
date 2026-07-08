@@ -12,6 +12,7 @@ import AlertCard from "../../shared/components/AlertCard";
 import ActiveWorkOrdersCard from "../components/cards/ActiveWorkOrdersCard";
 import UpcomingInspectionsCard from "../components/cards/UpcomingInspectionsCard";
 import CasesByBranchChart from "../components/charts/CasesByBranchChart";
+import RecentFacilityCasesTable from "../components/tables/RecentFacilityCasesTable";
 
 const LAPO_ORANGE = "#F97316";
 const LAPO_GREEN = "#22C55E";
@@ -160,6 +161,75 @@ const casesByBranch = [
   },
 ];
 
+const recentFacilityCases = [
+  {
+    id: "OHS-2026-001",
+    type: "Health & Ergonomics",
+    typeColor: "#059669",
+    typeBg: "#ECFDF5",
+    category: "Poor office ventilation",
+    branch: "Lagos",
+    severity: "High",
+    status: "Under Review",
+    workOrder: "WO-2026-001",
+  },
+  {
+    id: "OHS-2026-003",
+    type: "Health & Ergonomics",
+    typeColor: "#059669",
+    typeBg: "#ECFDF5",
+    category: "Chair-related body pain",
+    branch: "Lagos",
+    severity: "Medium",
+    status: "Logged",
+    workOrder: "WO-2026-002",
+  },
+  {
+    id: "OHS-2026-004",
+    type: "Environmental & Facility Hazards",
+    typeColor: "#0369A1",
+    typeBg: "#EFF6FF",
+    category: "Faulty facility equipment",
+    branch: "Surulere",
+    severity: "Medium",
+    status: "Resolved",
+    workOrder: null,
+  },
+  {
+    id: "OHS-2026-006",
+    type: "Health & Ergonomics",
+    typeColor: "#059669",
+    typeBg: "#ECFDF5",
+    category: "Computer-related strain",
+    branch: "Lagos",
+    severity: "Medium",
+    status: "Investigating",
+    workOrder: "WO-2026-003",
+  },
+  {
+    id: "OHS-2026-007",
+    type: "Environmental & Facility Hazards",
+    typeColor: "#0369A1",
+    typeBg: "#EFF6FF",
+    category: "Chemical pollution",
+    branch: "Abuja",
+    severity: "Critical",
+    status: "Logged",
+    workOrder: "WO-2026-004",
+  },
+  {
+    id: "OHS-2026-009",
+    type: "Environmental & Facility Hazards",
+    typeColor: "#0369A1",
+    typeBg: "#EFF6FF",
+    category: "Faulty facility equipment",
+    branch: "Abuja",
+    severity: "Medium",
+    status: "Under Review",
+    workOrder: "WO-2026-005",
+  },
+];
+
 const upcomingInspections: {
   id: string;
   type: string;
@@ -274,6 +344,13 @@ function FacilitiesDashboard() {
         title="Facility Cases by Branch"
         data={casesByBranch}
         onViewAll={() => navigate("/facilities/cases")}
+      />
+
+      <RecentFacilityCasesTable
+        title="Recent Facility Cases"
+        cases={recentFacilityCases}
+        onViewAll={() => navigate("/facilities/cases")}
+        onOpenCase={(id) => navigate(`/facilities/cases/${id}`)}
       />
     </div>
   );
