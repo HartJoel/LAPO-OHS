@@ -7,11 +7,69 @@ import {
   ShieldCheck,
   Users,
   Wrench,
+  ClipboardList,
+  ClipboardCheck,
+  BarChart3,
+  Settings,
 } from "lucide-react";
 import SystemStatusCard from "../components/cards/SystemStatusCard";
+import QuickLinksGrid from "../components/QuickLinksGrid";
+import UserRoleDistributionCard from "../components/cards/UserRoleDistributionCard";
+import CasesByBranchChart from "../components/cards/CasesByBranchChart";
 
 const LAPO_ORANGE = "#EC8020";
 const LAPO_GREEN = "#009D4C";
+
+const quickLinks = [
+  {
+    label: "Facility Cases",
+    desc: "View and manage reported cases",
+    path: "/facilities/cases",
+    icon: ClipboardList,
+    color: "#EC8020",
+    bg: "#FFF7ED",
+  },
+  {
+    label: "Work Orders",
+    desc: "Track maintenance work orders",
+    path: "/facilities/workorders",
+    icon: Wrench,
+    color: "#3B82F6",
+    bg: "#EFF6FF",
+  },
+  {
+    label: "Inspections",
+    desc: "Manage scheduled inspections",
+    path: "/facilities/inspections",
+    icon: ClipboardCheck,
+    color: "#009D4C",
+    bg: "#ECFDF5",
+  },
+  {
+    label: "Reports",
+    desc: "Facility analytics and reports",
+    path: "/facilities/reports",
+    icon: BarChart3,
+    color: "#7C3AED",
+    bg: "#F5F3FF",
+  },
+  {
+    label: "Settings",
+    desc: "Configure facility settings",
+    path: "/facilities/settings",
+    icon: Settings,
+    color: "#6B7280",
+    bg: "#F3F4F6",
+  },
+  {
+    label: "Documentation",
+    desc: "Policies and procedures",
+    path: "/facilities/docs",
+    icon: FileText,
+    color: "#DC2626",
+    bg: "#FEF2F2",
+  },
+];
 
 const stats = [
   {
@@ -88,6 +146,64 @@ const systemStatus = {
   ],
 };
 
+const userRoleDistribution = [
+  {
+    name: "Employee",
+    value: 4,
+  },
+  {
+    name: "HR & Compliance",
+    value: 1,
+  },
+  {
+    name: "Unit Head",
+    value: 1,
+  },
+  {
+    name: "Facilities & HSE",
+    value: 1,
+  },
+  {
+    name: "System Admin",
+    value: 1,
+  },
+];
+
+const casesByBranch = [
+  {
+    name: "Lagos",
+    cases: 18,
+    open: 6,
+  },
+  {
+    name: "Surulere",
+    cases: 12,
+    open: 4,
+  },
+  {
+    name: "Ikeja",
+    cases: 15,
+    open: 5,
+  },
+  {
+    name: "Abuja",
+    cases: 10,
+    open: 3,
+  },
+  {
+    name: "Port",
+    cases: 8,
+    open: 2,
+  },
+  {
+    name: "Kano",
+    cases: 6,
+    open: 1,
+  },
+];
+
+const ROLE_COLORS = ["#EC8020", "#009D4C", "#3B82F6", "#8B5CF6", "#DC2626"];
+
 function AdminDashboard() {
   const navigate = useNavigate();
   const today = new Date();
@@ -117,6 +233,21 @@ function AdminDashboard() {
         status={systemStatus.status}
         items={systemStatus.items}
       />
+
+      <QuickLinksGrid
+        links={quickLinks}
+        onNavigate={(path) => navigate(path)}
+      />
+
+      <div className="grid md:grid-cols-2 gap-5 mb-5">
+        <UserRoleDistributionCard
+          title="User Role Distribution"
+          data={userRoleDistribution}
+          colors={ROLE_COLORS}
+        />
+
+        <CasesByBranchChart title="Cases by Branch" data={casesByBranch} />
+      </div>
     </div>
   );
 }
