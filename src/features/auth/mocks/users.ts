@@ -9,6 +9,7 @@ export const MOCK_USERS: (User & { password: string })[] = [
     email: "ada@lapo.ng",
     password: "password123",
     role: "employee",
+    branch: "HQ",
     department: "Operations",
   },
   {
@@ -17,6 +18,7 @@ export const MOCK_USERS: (User & { password: string })[] = [
     email: "bola@lapo.ng",
     password: "password123",
     role: "hr",
+    branch: "HQ",
     department: "Human Resources",
   },
   {
@@ -25,6 +27,7 @@ export const MOCK_USERS: (User & { password: string })[] = [
     email: "chidi@lapo.ng",
     password: "password123",
     role: "unit_head",
+    branch: "HQ",
     department: "Finance",
   },
   {
@@ -33,6 +36,7 @@ export const MOCK_USERS: (User & { password: string })[] = [
     email: "dami@lapo.ng",
     password: "password123",
     role: "facilities",
+    branch: "HQ",
     department: "Facilities",
   },
   {
@@ -40,6 +44,7 @@ export const MOCK_USERS: (User & { password: string })[] = [
     name: "Emeka Eze",
     email: "admin@lapo.ng",
     password: "admin123",
+    branch: "HQ",
     role: "system_admin",
   },
 ];
