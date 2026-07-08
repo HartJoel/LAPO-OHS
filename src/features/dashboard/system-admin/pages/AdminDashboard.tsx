@@ -16,6 +16,7 @@ import SystemStatusCard from "../components/cards/SystemStatusCard";
 import QuickLinksGrid from "../components/QuickLinksGrid";
 import UserRoleDistributionCard from "../components/cards/UserRoleDistributionCard";
 import CasesByBranchChart from "../components/cards/CasesByBranchChart";
+import RecentSystemActivityCard from "../components/cards/RecentSystemActivityCard";
 
 const LAPO_ORANGE = "#EC8020";
 const LAPO_GREEN = "#009D4C";
@@ -204,6 +205,69 @@ const casesByBranch = [
 
 const ROLE_COLORS = ["#EC8020", "#009D4C", "#3B82F6", "#8B5CF6", "#DC2626"];
 
+const recentSystemActivities = [
+  {
+    id: "AUD-001",
+    action: "Case auto-routed to Facilities Management",
+    caseId: "OHS-2026-012",
+    performedBy: "System",
+    timestamp: "2026-04-11T08:01:00",
+  },
+  {
+    id: "AUD-002",
+    action:
+      "SLA BREACH ALERT: Critical case approaching 24hr SLA. Escalation triggered to Head of People & HSE Director.",
+    caseId: "OHS-2026-007",
+    performedBy: "System",
+    timestamp: "2026-04-11T08:00:00",
+  },
+  {
+    id: "AUD-003",
+    action: "Case logged by Amaka Okafor",
+    caseId: "OHS-2026-012",
+    performedBy: "Amaka Okafor",
+    timestamp: "2026-04-11T08:00:00",
+  },
+  {
+    id: "AUD-004",
+    action:
+      "SLA BREACH ALERT: Critical case approaching 24hr SLA — Escalation triggered",
+    caseId: "OHS-2026-016",
+    performedBy: "System",
+    timestamp: "2026-04-11T08:00:00",
+  },
+  {
+    id: "AUD-005",
+    action:
+      "Critical severity auto-routing: Facilities, HSE, and Branch Management notified",
+    caseId: "OHS-2026-007",
+    performedBy: "System",
+    timestamp: "2026-04-10T15:31:00",
+  },
+  {
+    id: "AUD-006",
+    action: "Anonymous case logged. Reference token issued: BZ3M-7R4S-T8UV",
+    caseId: "OHS-2026-007",
+    performedBy: "System (Anonymous)",
+    timestamp: "2026-04-10T15:30:00",
+  },
+  {
+    id: "AUD-007",
+    action:
+      "Critical severity: Facilities, HSE & Branch Management auto-notified",
+    caseId: "OHS-2026-016",
+    performedBy: "System",
+    timestamp: "2026-04-10T14:01:00",
+  },
+  {
+    id: "AUD-008",
+    action: "Anonymous case logged. Reference token: PH9K-4L6N-Q2WR",
+    caseId: "OHS-2026-016",
+    performedBy: "System (Anonymous)",
+    timestamp: "2026-04-10T14:00:00",
+  },
+];
+
 function AdminDashboard() {
   const navigate = useNavigate();
   const today = new Date();
@@ -248,6 +312,12 @@ function AdminDashboard() {
 
         <CasesByBranchChart title="Cases by Branch" data={casesByBranch} />
       </div>
+
+      <RecentSystemActivityCard
+        title="Recent System Activity"
+        activities={recentSystemActivities}
+        onViewAll={() => navigate("/admin/audit")}
+      />
     </div>
   );
 }
