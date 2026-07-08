@@ -1,8 +1,53 @@
-import { ClipboardCheck, Wrench } from "lucide-react";
+import {
+  AlertTriangle,
+  CheckCircle2,
+  ClipboardCheck,
+  Clock,
+  Wrench,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import StatCards from "../../shared";
 
-// const LAPO_ORANGE = "#F97316";
+const LAPO_ORANGE = "#F97316";
 const LAPO_GREEN = "#22C55E";
+
+const stats = [
+  {
+    label: "Active Work Orders",
+    value: 4,
+    icon: Wrench,
+    color: "#3B82F6",
+    bg: "#EFF6FF",
+  },
+  {
+    label: "Overdue WOs",
+    value: 2,
+    icon: Clock,
+    color: "#DC2626",
+    bg: "#FEF2F2",
+  },
+  {
+    label: "Critical Cases",
+    value: 2,
+    icon: AlertTriangle,
+    color: "#DC2626",
+    bg: "#FEF2F2",
+  },
+  {
+    label: "Inspections Due",
+    value: 4,
+    icon: ClipboardCheck,
+    color: LAPO_ORANGE,
+    bg: "#FFF4EA",
+  },
+  {
+    label: "WOs Completed",
+    value: 2,
+    icon: CheckCircle2,
+    color: LAPO_GREEN,
+    bg: "#EDFBF3",
+  },
+];
 
 function FacilitiesDashboard() {
   const navigate = useNavigate();
@@ -45,6 +90,8 @@ function FacilitiesDashboard() {
           </button>
         </div>
       </div>
+
+      <StatCards stats={stats} className="mb-6" />
     </div>
   );
 }
