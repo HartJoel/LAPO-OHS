@@ -9,6 +9,8 @@ import {
 import { useNavigate } from "react-router-dom";
 import StatCards from "../../shared";
 import AlertCard from "../../shared/components/AlertCard";
+import ActiveWorkOrdersCard from "../components/cards/ActiveWorkOrdersCard";
+import UpcomingInspectionsCard from "../components/cards/UpcomingInspectionsCard";
 
 const LAPO_ORANGE = "#F97316";
 const LAPO_GREEN = "#22C55E";
@@ -84,6 +86,72 @@ const slaBreaches = [
   },
 ];
 
+const activeWorkOrders = [
+  {
+    id: "WO-2026-001",
+    title: "HVAC System Service & Generator Duct Sealing",
+    branch: "Lagos",
+    scheduledDate: "2026-04-09",
+    priority: "High",
+    status: "In Progress",
+  },
+  {
+    id: "WO-2026-002",
+    title: "Ergonomic Chair Replacement – Workstation 12",
+    branch: "Lagos",
+    scheduledDate: "2026-04-14",
+    priority: "Medium",
+    status: "Pending",
+  },
+  {
+    id: "WO-2026-003",
+    title: "Monitor Arm & Wrist Rest Installation – Workstation 7",
+    branch: "Lagos",
+    scheduledDate: "2026-04-12",
+    priority: "Medium",
+    status: "Pending Parts",
+  },
+  {
+    id: "WO-2026-004",
+    title: "Chemical Fumes Investigation & Emergency Ventilation",
+    branch: "Abuja",
+    scheduledDate: "2026-04-10",
+    priority: "Critical",
+    status: "In Progress",
+  },
+];
+
+const upcomingInspections = [
+  {
+    id: "INS-2026-001",
+    type: "Routine Safety",
+    branch: "Lagos",
+    scheduledDate: "2026-04-12",
+    status: "Scheduled",
+  },
+  {
+    id: "INS-2026-002",
+    type: "Fire Safety",
+    branch: "Kano",
+    scheduledDate: "2026-04-12",
+    status: "Scheduled",
+  },
+  {
+    id: "INS-2026-003",
+    type: "Ergonomic Assessment",
+    branch: "Lagos",
+    scheduledDate: "2026-04-12",
+    status: "Scheduled",
+  },
+  {
+    id: "INS-2026-004",
+    type: "Emergency Preparedness",
+    branch: "Ibadan",
+    scheduledDate: "2026-04-15",
+    status: "Scheduled",
+  },
+];
+
 function FacilitiesDashboard() {
   const navigate = useNavigate();
   const today = new Date();
@@ -141,6 +209,21 @@ function FacilitiesDashboard() {
           tertiary: breach.tertiary,
         }))}
       />
+
+      <div className="grid md:grid-cols-2 gap-5 mt-6 mb-5">
+        <ActiveWorkOrdersCard
+          workOrders={activeWorkOrders}
+          onViewAll={() => navigate("/facilities/workorders")}
+          onOpenWorkOrder={(id) => navigate(`/facilities/workorders/${id}`)}
+        />
+
+        <UpcomingInspectionsCard
+          title="Upcoming Inspections"
+          inspections={upcomingInspections}
+          onViewAll={() => navigate("/facilities/inspections")}
+          onOpenInspection={(id) => navigate(`/facilities/inspections/${id}`)}
+        />
+      </div>
     </div>
   );
 }

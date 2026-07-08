@@ -86,7 +86,11 @@ const recentCases: Case[] = [
   },
 ];
 
-const getSLAStatus = (status: CaseStatus) => {
+const getSLAStatus = (
+  submittedDate: string,
+  severity: Severity,
+  status: CaseStatus,
+) => {
   if (status === "Resolved" || status === "Closed") {
     return {
       label: "Completed",
