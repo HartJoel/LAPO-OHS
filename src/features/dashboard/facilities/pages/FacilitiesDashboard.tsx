@@ -11,6 +11,7 @@ import StatCards from "../../shared";
 import AlertCard from "../../shared/components/AlertCard";
 import ActiveWorkOrdersCard from "../components/cards/ActiveWorkOrdersCard";
 import UpcomingInspectionsCard from "../components/cards/UpcomingInspectionsCard";
+import CasesByBranchChart from "../components/charts/CasesByBranchChart";
 
 const LAPO_ORANGE = "#F97316";
 const LAPO_GREEN = "#22C55E";
@@ -121,7 +122,51 @@ const activeWorkOrders = [
   },
 ];
 
-const upcomingInspections = [
+const casesByBranch = [
+  {
+    name: "Lagos Island Branch",
+    open: 4,
+    resolved: 3,
+  },
+  {
+    name: "Surulere Branch",
+    open: 2,
+    resolved: 5,
+  },
+  {
+    name: "Ikeja Branch",
+    open: 5,
+    resolved: 4,
+  },
+  {
+    name: "Abuja Main Branch",
+    open: 1,
+    resolved: 2,
+  },
+  {
+    name: "Port Harcourt Branch",
+    open: 3,
+    resolved: 1,
+  },
+  {
+    name: "Kano Branch",
+    open: 0,
+    resolved: 4,
+  },
+  {
+    name: "Head Office – Lagos",
+    open: 2,
+    resolved: 5,
+  },
+];
+
+const upcomingInspections: {
+  id: string;
+  type: string;
+  branch: string;
+  scheduledDate: string;
+  status: "Overdue" | "Scheduled";
+}[] = [
   {
     id: "INS-2026-001",
     type: "Routine Safety",
@@ -224,6 +269,12 @@ function FacilitiesDashboard() {
           onOpenInspection={(id) => navigate(`/facilities/inspections/${id}`)}
         />
       </div>
+
+      <CasesByBranchChart
+        title="Facility Cases by Branch"
+        data={casesByBranch}
+        onViewAll={() => navigate("/facilities/cases")}
+      />
     </div>
   );
 }
