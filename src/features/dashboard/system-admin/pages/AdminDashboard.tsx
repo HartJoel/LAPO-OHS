@@ -8,6 +8,7 @@ import {
   Users,
   Wrench,
 } from "lucide-react";
+import SystemStatusCard from "../components/cards/SystemStatusCard";
 
 const LAPO_ORANGE = "#EC8020";
 const LAPO_GREEN = "#009D4C";
@@ -64,6 +65,29 @@ const stats = [
   },
 ];
 
+const systemStatus = {
+  title: "System Status",
+  status: "All Systems Operational",
+  items: [
+    {
+      label: "System Uptime",
+      value: "99.7%",
+    },
+    {
+      label: "Last Backup",
+      value: "11 Apr 2026, 02:00",
+    },
+    {
+      label: "Active Sessions",
+      value: "8",
+    },
+    {
+      label: "Avg Response Time",
+      value: "1.2s",
+    },
+  ],
+};
+
 function AdminDashboard() {
   const navigate = useNavigate();
   const today = new Date();
@@ -87,6 +111,12 @@ function AdminDashboard() {
       </div>
 
       <StatCards stats={stats} className="mb-6" />
+
+      <SystemStatusCard
+        title={systemStatus.title}
+        status={systemStatus.status}
+        items={systemStatus.items}
+      />
     </div>
   );
 }
