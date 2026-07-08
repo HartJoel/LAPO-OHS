@@ -1,7 +1,4 @@
-import {
-  Clock,
-  TriangleAlert,
-} from "lucide-react";
+import { Clock, TriangleAlert } from "lucide-react";
 import type { User } from "../../../../types/auth.types";
 import StatCards from "../../shared";
 
@@ -14,16 +11,22 @@ import KpiSummary from "../components/cards/KpiSummary";
 import RecentCasesTable from "../components/tables/RecentCasesTable";
 import { useNavigate } from "react-router-dom";
 import type { CaseStatus, CaseType, Severity } from "../../../../types";
-import { bySeverity, byStatus, byType, kpiData, monthlyTrend, slaBreaches, stats } from "../data/dashboardData";
+import {
+  bySeverity,
+  byStatus,
+  byType,
+  kpiData,
+  monthlyTrend,
+  slaBreaches,
+  stats,
+} from "../data/dashboardData";
 
 interface Props {
   user: User;
 }
 
 const LAPO_ORANGE = "#EC8020";
-const LAPO_GREEN = "#009D4C";
-
-
+// const LAPO_GREEN = "#009D4C";
 
 interface Case {
   id: string;
@@ -83,11 +86,7 @@ const recentCases: Case[] = [
   },
 ];
 
-const getSLAStatus = (
-  submittedDate: string,
-  severity: Severity,
-  status: CaseStatus,
-) => {
+const getSLAStatus = (status: CaseStatus) => {
   if (status === "Resolved" || status === "Closed") {
     return {
       label: "Completed",
