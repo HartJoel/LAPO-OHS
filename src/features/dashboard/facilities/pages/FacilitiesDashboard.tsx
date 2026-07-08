@@ -3,10 +3,12 @@ import {
   CheckCircle2,
   ClipboardCheck,
   Clock,
+  TriangleAlert,
   Wrench,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import StatCards from "../../shared";
+import AlertCard from "../../shared/components/AlertCard";
 
 const LAPO_ORANGE = "#F97316";
 const LAPO_GREEN = "#22C55E";
@@ -46,6 +48,39 @@ const stats = [
     icon: CheckCircle2,
     color: LAPO_GREEN,
     bg: "#EDFBF3",
+  },
+];
+
+const slaBreaches = [
+  {
+    id: "OHS-2026-001",
+    primary: "OHS-2026-001",
+    secondary: "High",
+    tertiary: "Poor office ventilation",
+  },
+  {
+    id: "OHS-2026-002",
+    primary: "OHS-2026-002",
+    secondary: "High",
+    tertiary: "Poor office ventilation",
+  },
+  {
+    id: "OHS-2026-003",
+    primary: "OHS-2026-003",
+    secondary: "Medium",
+    tertiary: "Poor office ventilation",
+  },
+  {
+    id: "OHS-2026-005",
+    primary: "OHS-2026-005",
+    secondary: "High",
+    tertiary: "Poor office ventilation",
+  },
+  {
+    id: "OHS-2026-006",
+    primary: "OHS-2026-006",
+    secondary: "Medium",
+    tertiary: "Poor office ventilation",
   },
 ];
 
@@ -92,6 +127,20 @@ function FacilitiesDashboard() {
       </div>
 
       <StatCards stats={stats} className="mb-6" />
+
+      <AlertCard
+        title="SLA Breaches — Immediate Attention Required"
+        count={slaBreaches.length}
+        color="red"
+        icon={<TriangleAlert size={16} />}
+        route="/cases"
+        items={slaBreaches.map((breach) => ({
+          id: breach.id,
+          primary: breach.primary,
+          secondary: breach.secondary,
+          tertiary: breach.tertiary,
+        }))}
+      />
     </div>
   );
 }
