@@ -9,7 +9,8 @@ import { LoginPage } from "./features/auth";
 
 import DashboardPage from "./features/dashboard/DashboardPage";
 import AuthLayout from "./components/layout/AuthLayout";
-import SubmitReport from "./features/report/pages/SubmitReport";
+import SubmitReport from "./features/report/pages";
+
 
 function App() {
   const router = createBrowserRouter(
