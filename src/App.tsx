@@ -9,6 +9,7 @@ import { LoginPage } from "./features/auth";
 
 import DashboardPage from "./features/dashboard/DashboardPage";
 import AuthLayout from "./components/layout/AuthLayout";
+import SubmitReport from "./features/report/pages/SubmitReport";
 
 function App() {
   const router = createBrowserRouter(
@@ -25,7 +26,7 @@ function App() {
 
           {/* Future pages */}
           {/* <Route path="/employees" element={<EmployeesPage />} /> */}
-          {/* <Route path="/reports" element={<ReportsPage />} /> */}
+          <Route path="/report" element={<SubmitReport />} />
           {/* <Route path="/settings" element={<SettingsPage />} /> */}
         </Route>
       </>,
