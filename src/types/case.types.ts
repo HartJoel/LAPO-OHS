@@ -5,7 +5,9 @@ export type CaseType =
   | "environmental"
   | "security"
   | "legal"
-  | "client";
+  | "client"
+  | "Health & Ergonomics"
+  | "Environmental & Facility";
 
 export type CaseStatus =
   | "Logged"
@@ -15,8 +17,6 @@ export type CaseStatus =
   | "Resolved"
   | "Closed";
 
-export type Severity =
-  | "Critical"
-  | "High"
-  | "Medium"
-  | "Low";
+export type Severity = "Critical" | "High" | "Medium" | "Low";
+
+export type SLAStatus = "Within SLA" | "SLA Breached";

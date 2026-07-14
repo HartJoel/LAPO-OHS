@@ -12,7 +12,7 @@ function ReviewStep({ form, onSubmit }: ReviewStepProps) {
   if (!form.selectedCategory) return null;
 
   return (
-    <div className="mx-auto max-w-[700px]  p-6">
+    <div className="mx-auto max-w-[700px] p-6">
       
       {/* Header */}
       <div className="mb-5">

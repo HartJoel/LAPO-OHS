@@ -1,17 +1,35 @@
-import { ShieldCheck } from "lucide-react";
+import { SubmissionSuccess } from "../components/SubmissionSuccess";
+import { useNavigate } from "react-router-dom";
+import type { SubmitReportForm } from "../useSubmitReportForm";
 
-function SuccessStep() {
+interface ReviewStepProps {
+  form: SubmitReportForm;
+}
+
+function SuccessStep({ form }: ReviewStepProps) {
+  const navigate = useNavigate();
   return (
-    <div className="mx-auto max-w-205 bg-[#F8F4EE] px-6 py-14 text-center">
-      <ShieldCheck className="mx-auto mb-4 text-green-700" size={40} />
-      <h2 className="mb-2 text-[15px] font-bold text-stone-900">
-        Report submitted
-      </h2>
-      <p className="mx-auto max-w-md text-[13px] leading-relaxed text-stone-600">
-        Thank you for speaking up. Your report has been logged and routed to
-        the relevant department. You'll be notified of any updates if you
-        did not report anonymously.
-      </p>
+    <div className="">
+      <div className="bg-[#FFE9D6] px-6 pt-11 pb-8 text-center">
+        <div className="mx-auto mb-4 flex h-[68px] w-[68px] items-center justify-center rounded-full bg-[#009D4C] text-[30px]">
+          ✅
+        </div>
+
+        <h2 className="mb-[6px] text-[22px] font-bold ">
+          Report submitted successfully
+        </h2>
+
+        <p className="mx-auto max-w-sm text-[13px] leading-[1.5] ">
+          Your report has been logged and routed to the appropriate team, Amaka
+        </p>
+      </div>
+
+      <SubmissionSuccess
+        referenceNumber="OHS-2026-00482"
+        submittedDate="11 July 2026"
+        onDashboard={() => navigate("/dashboard")}
+        onNewReport={form.resetForm}
+      />
     </div>
   );
 }

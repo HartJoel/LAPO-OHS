@@ -21,7 +21,7 @@ function SubmitReport() {
       {form.step === 1 && <CategoryStep form={form} />}
       {form.step === 2 && <DetailsStep form={form} />}
       {form.step === 3 && <ReviewStep form={form} onSubmit={handleSubmit} />}
-      {form.step === 4 && <SuccessStep />}
+      {form.step === 4 && <SuccessStep form={form} />}
     </>
   );
 }

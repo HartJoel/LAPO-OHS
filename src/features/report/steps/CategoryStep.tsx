@@ -9,7 +9,7 @@ interface CategoryStepProps {
 
 function CategoryStep({ form }: CategoryStepProps) {
   return (
-    <div className="mx-auto max-w-205 bg-[#F8F4EE] px-6 py-6">
+    <div className="mx-auto max-w-205 px-6 py-6">
       <AnonymousToggle
         anonymous={form.anonymous}
         onToggle={form.toggleAnonymous}

@@ -20,7 +20,7 @@ function DetailsStep({ form }: DetailsStepProps) {
   if (!form.selectedCategory) return null;
 
   return (
-    <div className="mx-auto max-w-205 bg-[#F8F4EE] px-6 py-6">
+    <div className="mx-auto max-w-205 px-6 py-6">
       <SelectedCategoryBadge category={form.selectedCategory} />
       <h2 className="mb-[18px] text-[15px] font-bold text-stone-900">
         Tell us what happened

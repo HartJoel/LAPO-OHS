@@ -8,8 +8,7 @@ const MAX_ATTACHMENTS = 3;
 export function useSubmitReportForm() {
   const [step, setStep] = useState(1);
   const [anonymous, setAnonymous] = useState(false);
-  const [selectedCategory, setSelectedCategory] =
-    useState<SelectedCategory>();
+  const [selectedCategory, setSelectedCategory] = useState<SelectedCategory>();
 
   const [branch, setBranch] = useState("");
   const [area, setArea] = useState("");
@@ -51,6 +50,34 @@ export function useSubmitReportForm() {
     setStep((prev) => prev + 1);
   }
 
+  function resetForm() {
+    setStep(1);
+
+    setAnonymous(false);
+    setSelectedCategory(undefined);
+
+    setBranch("");
+    setArea("");
+    setIncidentDate("");
+    setIncidentTime("");
+
+    setSeverity("Medium");
+
+    setHasInjury(null);
+    setAffectedBodyArea("");
+    setIsRecurring(null);
+
+    setDescription("");
+    setWitnesses("");
+
+    setAttachments([]);
+
+    // Optional: clear the file input itself
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  }
+
   const canProceedFromCategory = Boolean(selectedCategory);
 
   const canProceedFromDetails =
@@ -66,6 +93,7 @@ export function useSubmitReportForm() {
     goToStep,
     goBack,
     goNext,
+    resetForm,
 
     anonymous,
     toggleAnonymous: () => setAnonymous((prev) => !prev),
