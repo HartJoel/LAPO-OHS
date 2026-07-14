@@ -1,9 +1,15 @@
 import { useState } from "react";
 import CaseTrackerSearchCard from "../components/CaseTrackerSearchCard";
-import PageHeader from "../components/PageHeader";
+import PageHeader from "../components/stages/PageHeader";
 import { LockIcon } from "lucide-react";
 import CaseTrackerHeader from "../components/CaseTrackerHeader";
 import type { Case } from "../../dashboard/employee/pages/EmployeeDashboard";
+import CaseStatusTimeline from "../components/CaseStatusTimeline";
+import LoggedStage from "../components/stages/LoggedStage";
+import UnderReviewStage from "../components/stages/UnderReviewStage";
+import InvestigatingStage from "../components/stages/InvestigatingStage";
+import ResolvedStage from "../components/stages/ResolvedStage";
+import ClosedStage from "../components/stages/ClosedStage";
 
 const LAPO_GREEN = "#22C55E";
 
@@ -13,11 +19,11 @@ const MOCK_CASES: Case[] = [
   {
     token: "AX7K-2P9Q-R3ST",
     id: "CASE-2026-001",
-    title: "Ergonomic issue reported",       // add required field
+    title: "Ergonomic issue reported", // add required field
     category: "Health & Ergonomics",
     branch: "Benin Branch",
     location: "Office Floor 2",
-    status: "in-progress",
+    status: "Investigating",
     severity: "medium",
     type: "health",
   },
@@ -103,6 +109,22 @@ function AnonymousTrackerPage() {
             result={result}
             sla={sla}
           />
+
+          {result && (
+            <>
+              <CaseStatusTimeline currentStatus={result.status} />
+
+              {result.status === "Logged" && <LoggedStage />}
+
+              {result.status === "Under Review" && <UnderReviewStage />}
+
+              {result.status === "Investigating" && <InvestigatingStage />}
+
+              {result.status === "Resolved" && <ResolvedStage />}
+
+              {result.status === "Closed" && <ClosedStage />}
+            </>
+          )}
         </div>
       </div>
     </>
