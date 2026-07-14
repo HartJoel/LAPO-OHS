@@ -15,7 +15,8 @@ export type CaseStatus =
   | "Investigating"
   | "Escalated"
   | "Resolved"
-  | "Closed";
+  | "Closed"
+  | "in-progress"
 
 export type Severity = "Critical" | "High" | "Medium" | "Low";
 

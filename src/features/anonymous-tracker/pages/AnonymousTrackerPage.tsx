@@ -1,9 +1,64 @@
+import { useState } from "react";
+import CaseTrackerSearchCard from "../components/CaseTrackerSearchCard";
 import PageHeader from "../components/PageHeader";
 import { LockIcon } from "lucide-react";
+import CaseTrackerHeader from "../components/CaseTrackerHeader";
+import type { Case } from "../../dashboard/employee/pages/EmployeeDashboard";
 
 const LAPO_GREEN = "#22C55E";
 
+const SAMPLE_TOKENS = ["AX7K-2P9Q-R3ST"];
+
+const MOCK_CASES: Case[] = [
+  {
+    token: "AX7K-2P9Q-R3ST",
+    id: "CASE-2026-001",
+    title: "Ergonomic issue reported",       // add required field
+    category: "Health & Ergonomics",
+    branch: "Benin Branch",
+    location: "Office Floor 2",
+    status: "in-progress",
+    severity: "medium",
+    type: "health",
+  },
+];
+
 function AnonymousTrackerPage() {
+  const [token, setToken] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [searched, setSearched] = useState(false);
+  const [result, setResult] = useState<Case | undefined>();
+
+  const [sla, setSla] = useState<{
+    label: string;
+    color: "red" | "amber" | "green" | "gray";
+  }>();
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    setTimeout(() => {
+      const foundCase = MOCK_CASES.find((c) => c.token === token.trim());
+
+      setResult(foundCase);
+
+      setSearched(true);
+
+      if (foundCase) {
+        setSla({
+          label: "2 days remaining",
+          color: "green",
+        });
+      } else {
+        setSla(undefined);
+      }
+
+      setLoading(false);
+    }, 800); // simulate API delay
+  };
+
   return (
     <>
       <div className="min-h-screen" style={{ backgroundColor: "#F7F8FA" }}>
@@ -32,6 +87,22 @@ function AnonymousTrackerPage() {
               </div>
             </div>
           </div>
+
+          <CaseTrackerSearchCard
+            token={token}
+            loading={loading}
+            sampleTokens={SAMPLE_TOKENS}
+            onTokenChange={setToken}
+            onSearch={handleSearch}
+          />
+
+          <CaseTrackerHeader
+            searched={searched}
+            loading={loading}
+            token={token}
+            result={result}
+            sla={sla}
+          />
         </div>
       </div>
     </>
