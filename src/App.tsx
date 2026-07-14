@@ -12,6 +12,8 @@ import AuthLayout from "./components/layout/AuthLayout";
 import SubmitReport from "./features/report/pages";
 import MyCases from "./features/cases/pages/MyCases";
 
+import AnonymousTrackerPage from "./features/anonymous-tracker/pages/AnonymousTrackerPage";
+
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
           <Route path="/report" element={<SubmitReport />} />
           <Route path="/my-cases" element={<MyCases />} />
         </Route>
+
+        <Route path="/track" element={<AnonymousTrackerPage/>}/>
       </>,
     ),
   );
