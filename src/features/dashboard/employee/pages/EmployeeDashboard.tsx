@@ -116,10 +116,14 @@ const quickActions = [
 
 export interface Case {
   id: string;
+  token?: string;
   category: string;
   title: string;
   branch: string;
+  location?: string;
   status: CaseStatus;
+  severity?: string;
+  type?: string;
 }
 
 const cases: Case[] = [
