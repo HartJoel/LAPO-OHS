@@ -1,66 +1,20 @@
 import { Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import TableFilters from "../components/MyCaseTableFilters";
+import TableFilters from "../../components/MyCaseTableFilters";
 import { useState } from "react";
-import type { CaseStatus, CaseType, Severity, SLAStatus } from "../../../types";
+import type {
+  CaseStatus,
+  CaseType,
+  
+} from "../../../../types";
 
-import EmployeeCasesTable from "../components/table/EmployeeCasesTable";
+import EmployeeCasesTable from "../../components/card/EmployeeCasesTable";
+import { cases } from "../../mockCases";
 
 function MyCases() {
-  interface Case {
-    id: string;
-    type: CaseType;
-    category: string;
-    branch: string;
-    status: CaseStatus;
-    severity: Severity;
-    sla: SLAStatus;
-    submittedDate: string;
-  }
 
-  const cases: Case[] = [
-    {
-      id: "OHS-2026-001",
-      type: "Health & Ergonomics",
-      category: "Poor office ventilation",
-      branch: "Lagos Island Branch",
-      status: "Under Review",
-      severity: "High",
-      sla: "SLA Breached",
-      submittedDate: "8 Apr 2026",
-    },
-    {
-      id: "OHS-2026-003",
-      type: "Health & Ergonomics",
-      category: "Chair-related body pain",
-      branch: "Lagos Island Branch",
-      status: "Logged",
-      severity: "Medium",
-      sla: "SLA Breached",
-      submittedDate: "10 Apr 2026",
-    },
-    {
-      id: "OHS-2026-006",
-      type: "Health & Ergonomics",
-      category: "Computer-related strain",
-      branch: "Lagos Island Branch",
-      status: "Investigating",
-      severity: "Medium",
-      sla: "SLA Breached",
-      submittedDate: "9 Apr 2026",
-    },
-    {
-      id: "OHS-2026-012",
-      type: "Environmental & Facility",
-      category: "Faulty facility equipment",
-      branch: "Lagos Island Branch",
-      status: "Logged",
-      severity: "Medium",
-      sla: "SLA Breached",
-      submittedDate: "11 Apr 2026",
-    },
-  ];
 
+  
   const [search, setSearch] = useState("");
 
   const [statusFilter, setStatusFilter] = useState<CaseStatus | "All">("All");
@@ -119,8 +73,7 @@ function MyCases() {
 
       <EmployeeCasesTable
         cases={filtered}
-        openCase={(id) => navigate(`/cases/${id}`)}
-        
+        openCase={(id) => navigate(`/my-case/${id}`)}
       />
     </div>
   );

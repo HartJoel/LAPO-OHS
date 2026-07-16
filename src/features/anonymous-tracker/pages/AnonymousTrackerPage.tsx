@@ -3,13 +3,14 @@ import CaseTrackerSearchCard from "../components/CaseTrackerSearchCard";
 import PageHeader from "../components/stages/PageHeader";
 import { LockIcon } from "lucide-react";
 import CaseTrackerHeader from "../components/CaseTrackerHeader";
-import type { Case } from "../../dashboard/employee/pages/EmployeeDashboard";
+
 import CaseStatusTimeline from "../components/CaseStatusTimeline";
 import LoggedStage from "../components/stages/LoggedStage";
 import UnderReviewStage from "../components/stages/UnderReviewStage";
 import InvestigatingStage from "../components/stages/InvestigatingStage";
 import ResolvedStage from "../components/stages/ResolvedStage";
 import ClosedStage from "../components/stages/ClosedStage";
+import type { Case } from "../../shared/types";
 
 const LAPO_GREEN = "#22C55E";
 
@@ -24,7 +25,7 @@ const MOCK_CASES: Case[] = [
     branch: "Benin Branch",
     location: "Office Floor 2",
     status: "Investigating",
-    severity: "medium",
+    severity: "Medium",
     type: "health",
   },
 ];

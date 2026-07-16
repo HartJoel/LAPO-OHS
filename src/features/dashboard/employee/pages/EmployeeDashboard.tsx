@@ -19,7 +19,7 @@ import {
 import StatCards from "../../shared";
 import { useNavigate } from "react-router-dom";
 import { StatusBadge } from "../../../../components/ui/badges";
-import type { CaseStatus } from "../../../../types";
+import type { CaseStatus, CaseType, Severity } from "../../../../types";
 
 const LAPO_ORANGE = "#F97316";
 const LAPO_GREEN = "#22C55E";
@@ -122,8 +122,8 @@ export interface Case {
   branch: string;
   location?: string;
   status: CaseStatus;
-  severity?: string;
-  type?: string;
+  severity?: Severity;
+  type?: CaseType;
 }
 
 const cases: Case[] = [

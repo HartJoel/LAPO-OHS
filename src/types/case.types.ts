@@ -1,8 +1,8 @@
 export type CaseType =
-  | "safety"
+  | "Safety"
   | "health"
-  | "harassment"
-  | "environmental"
+  | "Harassment & Conduct"
+  | "Environmental"
   | "security"
   | "legal"
   | "client"

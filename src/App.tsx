@@ -10,9 +10,10 @@ import { LoginPage } from "./features/auth";
 import DashboardPage from "./features/dashboard/DashboardPage";
 import AuthLayout from "./components/layout/AuthLayout";
 import SubmitReport from "./features/report/pages";
-import MyCases from "./features/cases/pages/MyCases";
+import MyCases from "./features/cases/pages/employee/MyCases";
 
 import AnonymousTrackerPage from "./features/anonymous-tracker/pages/AnonymousTrackerPage";
+import MyCaseDetail from "./features/cases/pages/employee/MyCaseDetail";
 
 
 
@@ -33,6 +34,7 @@ function App() {
           {/* <Route path="/employees" element={<EmployeesPage />} /> */}
           <Route path="/report" element={<SubmitReport />} />
           <Route path="/my-cases" element={<MyCases />} />
+          <Route path="/my-case/:id" element={<MyCaseDetail />} />
         </Route>
 
         <Route path="/track" element={<AnonymousTrackerPage/>}/>

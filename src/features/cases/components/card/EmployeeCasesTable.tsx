@@ -1,25 +1,6 @@
 import { ChevronRight, FolderOpen } from "lucide-react";
-import {
-  SeverityBadge,
-  StatusBadge,
-} from "../../../../components/ui/badges";
-
-import type {
-  CaseStatus,
-  CaseType,
-  Severity,
-} from "../../../../types/case.types";
-
-interface Case {
-  id: string;
-  type: string;
-  category: string;
-  branch: string;
-  status: CaseStatus;
-  severity: Severity;
-  submittedDate: string;
-  sla: string;
-}
+import { SeverityBadge, StatusBadge } from "../../../../components/ui/badges";
+import type { Case } from "../../../shared/types";
 
 // interface SLAStatus {
 //   label: string;
@@ -110,11 +91,9 @@ const EmployeeCasesTable = ({ cases, openCase }: EmployeeCasesTableProps) => {
                         className={`text-xs font-medium ${
                           c.sla === "SLA Breached"
                             ? "text-red-600"
-                            : c.sla === "Approaching SLA"
-                              ? "text-amber-600"
-                              : c.sla === "Within SLA"
-                                ? "text-green-600"
-                                : "text-gray-400"
+                            : c.sla === "Within SLA"
+                              ? "text-green-600"
+                              : "text-gray-400"
                         }`}
                       >
                         {c.sla}

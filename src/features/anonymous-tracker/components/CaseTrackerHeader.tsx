@@ -1,7 +1,7 @@
 import { AlertCircle, CheckCircle, Clock } from "lucide-react";
 
-
-import type { Case } from "../../dashboard/employee/pages/EmployeeDashboard";
+import { getSeverityBadge, getStatusBadge, getTypeBadge } from "../../shared/components/badges";
+import type { Case } from "../../shared/types";
 
 const LAPO_GREEN = "#22C55E";
 
@@ -16,63 +16,7 @@ interface Props {
   };
 }
 
-const getStatusBadge = (status: string) => {
-  switch (status) {
-    case "Open":
-      return "bg-blue-50 text-blue-700";
 
-    case "Investigating":
-    case "In Progress":
-      return "bg-orange-50 text-orange-700";
-
-    case "Resolved":
-      return "bg-green-50 text-green-700";
-
-    case "Closed":
-      return "bg-gray-100 text-gray-700";
-
-    default:
-      return "bg-gray-50 text-gray-600";
-  }
-};
-
-const getSeverityBadge = (severity: string) => {
-  switch (severity) {
-    case "Low":
-      return "bg-green-50 text-green-700 border-green-200";
-
-    case "Medium":
-      return "bg-yellow-50 text-yellow-700 border-yellow-200";
-
-    case "High":
-      return "bg-orange-50 text-orange-700 border-orange-200";
-
-    case "Critical":
-      return "bg-red-50 text-red-700 border-red-200";
-
-    default:
-      return "bg-gray-50 text-gray-600 border-gray-200";
-  }
-};
-
-const getTypeBadge = (type: string) => {
-  switch (type) {
-    case "Health & Ergonomics":
-      return "bg-emerald-50 text-emerald-700";
-
-    case "Safety":
-      return "bg-blue-50 text-blue-700";
-
-    case "Harassment & Conduct":
-      return "bg-purple-50 text-purple-700";
-
-    case "Environmental":
-      return "bg-teal-50 text-teal-700";
-
-    default:
-      return "bg-gray-50 text-gray-600";
-  }
-};
 
 export default function CaseTrackerHeader({
   searched,
