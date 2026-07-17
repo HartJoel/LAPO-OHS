@@ -1,8 +1,8 @@
 // components/CaseHeaderCard.tsx
 
 import { Calendar, Clock, MapPin, Building2 } from "lucide-react";
-import { getSeverityBadge, getStatusBadge, getTypeBadge, slaColors } from "../../shared/components/badges";
-import type { Case } from "../../shared/types";
+import { getSeverityBadge, getStatusBadge, getTypeBadge, slaColors } from "../../../shared/components/badges";
+import type { Case } from "../../../shared/types";
 
 
 interface Props {

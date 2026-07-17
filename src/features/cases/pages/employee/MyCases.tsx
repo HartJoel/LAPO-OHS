@@ -1,6 +1,6 @@
 import { Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import TableFilters from "../../components/MyCaseTableFilters";
+import TableFilters from "../../components/table/MyCaseTableFilters";
 import { useState } from "react";
 import type {
   CaseStatus,
@@ -8,7 +8,7 @@ import type {
   
 } from "../../../../types";
 
-import EmployeeCasesTable from "../../components/card/EmployeeCasesTable";
+import EmployeeCasesTable from "../../components/table/EmployeeCasesTable";
 import { cases } from "../../mockCases";
 
 function MyCases() {

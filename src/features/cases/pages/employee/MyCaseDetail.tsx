@@ -1,7 +1,7 @@
 import { ChevronLeft } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import CaseHeaderCard from "../../components/CaseHeaderCard";
+import CaseHeaderCard from "../../components/card/CaseHeaderCard";
 import {
   cases,
   description,
@@ -12,7 +12,7 @@ import {
 import CaseStatusTimeline from "../../../anonymous-tracker/components/CaseStatusTimeline";
 import CaseAuditTrail from "../../components/CaseAuditTrail";
 import CaseDescriptionCard from "../../components/card/CaseDescriptionCard";
-import CaseCorrespondence from "../../components/table/CaseCorrespondence";
+import CaseCorrespondence from "../../components/CaseCorrespondence";
 
 function MyCaseDetail() {
   const navigate = useNavigate();

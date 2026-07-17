@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MessageSquare, Send } from "lucide-react";
-import type { CaseStatus } from "../../../../types";
+import type { CaseStatus } from "../../../types";
 
 const LAPO_GREEN = "#009D4C";
 const LAPO_ORANGE = "#EC8020";

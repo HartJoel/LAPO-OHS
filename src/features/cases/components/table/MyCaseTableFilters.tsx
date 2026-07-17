@@ -1,5 +1,5 @@
 import { Filter, Search } from "lucide-react";
-import type { CaseStatus, CaseType } from "../../../types";
+import type { CaseStatus, CaseType } from "../../../../types";
 
 interface TableFiltersProps {
   search: string;

@@ -14,8 +14,8 @@ import MyCases from "./features/cases/pages/employee/MyCases";
 
 import AnonymousTrackerPage from "./features/anonymous-tracker/pages/AnonymousTrackerPage";
 import MyCaseDetail from "./features/cases/pages/employee/MyCaseDetail";
-
-
+import Cases from "./features/cases/pages/hr/Cases";
+import CaseDetail from "./features/cases/pages/hr/CaseDetail";
 
 function App() {
   const router = createBrowserRouter(
@@ -35,9 +35,11 @@ function App() {
           <Route path="/report" element={<SubmitReport />} />
           <Route path="/my-cases" element={<MyCases />} />
           <Route path="/my-case/:id" element={<MyCaseDetail />} />
+          <Route path="/cases" element={<Cases />} />
+          <Route path="/cases/:id" element={<CaseDetail />} />
         </Route>
 
-        <Route path="/track" element={<AnonymousTrackerPage/>}/>
+        <Route path="/track" element={<AnonymousTrackerPage />} />
       </>,
     ),
   );
