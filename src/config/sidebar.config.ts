@@ -37,10 +37,10 @@ export const sidebarConfig: Record<UserRole, NavItem[]> = {
 
   system_admin: [
     { label: "Dashboard", path: "/dashboard", icon: "ti-home" },
-    { label: "User management", path: "/admin/users", icon: "ti-users" },
-    { label: "Analytics", path: "/admin/analytics", icon: "ti-chart-bar" },
-    { label: "Audit log", path: "/admin/audit", icon: "ti-file-text" },
-    { label: "System settings", path: "/admin/settings", icon: "ti-settings" },
+    { label: "User management", path: "/users", icon: "ti-users" },
+    { label: "Analytics", path: "/analytics", icon: "ti-chart-bar" },
+    { label: "Audit log", path: "/audit", icon: "ti-file-text" },
+    { label: "System settings", path: "/settings", icon: "ti-settings" },
   ],
 };
 
