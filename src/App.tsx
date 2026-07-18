@@ -10,13 +10,15 @@ import { LoginPage } from "./features/auth";
 import DashboardPage from "./features/dashboard/DashboardPage";
 import AuthLayout from "./components/layout/AuthLayout";
 import SubmitReport from "./features/report/pages";
-import {Cases, MyCases, MyCaseDetail, CaseDetail} from "./features/cases"
+import { Cases, MyCases, MyCaseDetail, CaseDetail } from "./features/cases";
 
 import AnonymousTrackerPage from "./features/anonymous-tracker/pages/AnonymousTrackerPage";
 
 import Users from "./features/user-management/pages/Users";
 
 import SystemAnalytis from "./features/analytics/pages/SystemAnalytis";
+import AuditLog from "./features/audit/pages/AuditLog";
+import SystemSettings from "./features/system-settings/pages/SystemSettings";
 
 function App() {
   const router = createBrowserRouter(
@@ -40,6 +42,8 @@ function App() {
           <Route path="/cases/:id" element={<CaseDetail />} />
           <Route path="/users" element={<Users />} />
           <Route path="/analytics" element={<SystemAnalytis />} />
+          <Route path="/audit" element={<AuditLog />} />
+          <Route path="/settings" element={<SystemSettings/>}/>
         </Route>
 
         <Route path="/track" element={<AnonymousTrackerPage />} />
