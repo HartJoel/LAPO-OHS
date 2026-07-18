@@ -13,7 +13,7 @@ const FEATURES = [
 export function LeftPanel() {
   return (
     <div
-      className="hidden lg:flex flex-col justify-between w-[480px] flex-shrink-0 p-10 relative overflow-hidden"
+      className="hidden lg:flex flex-col justify-between w-120 shrink-0 p-10 relative overflow-hidden"
       style={{ background: `linear-gradient(160deg, #0F1E2E 0%, #162437 60%, #1A3A28 100%)` }}
     >
       {/* Background decoration */}
