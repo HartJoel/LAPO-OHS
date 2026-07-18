@@ -1,18 +1,11 @@
-export type UserRole =
-  | "employee"
-  | "hr"
-  | "sustainability"
-  | "unit_head"
-  | "facilities"
-  | "system_admin";
-
 export interface User {
   id: string;
+  initials: string;
   name: string;
   email: string;
-  role: UserRole;
+  role: string;
+  unit: string;
   branch: string;
-  department?: string;
   submittedCases: number;
   handledCases?: number;
   status: "Active" | "Inactive";

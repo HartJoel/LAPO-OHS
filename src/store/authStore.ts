@@ -8,6 +8,7 @@ export const ELEVATED_ROLES: UserRole[] = [
   "unit_head",
   "facilities",
   "system_admin",
+  "sustainability",
 ];
 
 // Human-readable labels for each role
@@ -17,6 +18,7 @@ export const ROLE_LABELS: Record<UserRole, string> = {
   unit_head: "Unit Head",
   facilities: "Facilities & HSE",
   system_admin: "System Admin",
+  sustainability: "Sustainability",
 };
 
 // The route each elevated role lands on when returning to their primary view
@@ -26,6 +28,7 @@ export const ROLE_HOME_ROUTES: Record<UserRole, string> = {
   unit_head: "/dashboard",
   facilities: "/dashboard",
   system_admin: "/dashboard",
+  sustainability: "/dashboard",
 };
 
 interface AuthState {

@@ -17,6 +17,8 @@ export default function DashboardPage() {
       return <EmployeeDashboard user={user} />;
     case "hr":
       return <HRDashboard user={user} />;
+    case "sustainability":
+      return <HRDashboard user={user} />;
     case "unit_head":
       return <UnitHeadDashboard user={user} />;
     case "facilities":

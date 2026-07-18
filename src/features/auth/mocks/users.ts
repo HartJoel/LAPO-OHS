@@ -23,6 +23,15 @@ export const MOCK_USERS: (User & { password: string })[] = [
   },
   {
     id: "3",
+    name: "Sharon Adeyemi",
+    email: "sharon@lapo.ng",
+    password: "password123",
+    role: "sustainability",
+    branch: "HQ",
+    department: "Human Resources",
+  },
+  {
+    id: "4",
     name: "Chidi Nwosu",
     email: "chidi@lapo.ng",
     password: "password123",
@@ -31,7 +40,7 @@ export const MOCK_USERS: (User & { password: string })[] = [
     department: "Finance",
   },
   {
-    id: "4",
+    id: "5",
     name: "Dami Osei",
     email: "dami@lapo.ng",
     password: "password123",
@@ -40,7 +49,7 @@ export const MOCK_USERS: (User & { password: string })[] = [
     department: "Facilities",
   },
   {
-    id: "5",
+    id: "6",
     name: "Emeka Eze",
     email: "admin@lapo.ng",
     password: "admin123",

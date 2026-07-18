@@ -119,6 +119,16 @@ export default function HRDashboard({ user }: Props) {
     month: "long",
     year: "numeric",
   });
+
+  const dashboardTitle =
+    user.role === "sustainability"
+      ? "Sustainability Dashboard"
+      : "Incident Manager Dashboard";
+  const dashboardSubtitle =
+    user.role === "sustainability"
+      ? "System-wide sustainability case overview ·"
+      : "System-wide OHS case overview ·";
+
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <div className="mb-6">
@@ -126,10 +136,10 @@ export default function HRDashboard({ user }: Props) {
           className="text-gray-900 mb-1"
           style={{ fontSize: "22px", fontWeight: 700 }}
         >
-          Incident Manager Dashboard
+          {dashboardTitle}
         </h1>
         <p className="text-gray-500 text-sm">
-          System-wide OHS case overview · {formattedDate}
+          {dashboardSubtitle} {formattedDate}
         </p>
       </div>
 
