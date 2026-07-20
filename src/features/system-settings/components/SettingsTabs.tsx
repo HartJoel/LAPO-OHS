@@ -16,7 +16,7 @@ interface Props {
 
 export default function SettingsTabs({ tabs, activeTab, onChange }: Props) {
   return (
-    <div className="flex gap-1 p-1 bg-gray-200 rounded-xl mb-6 flex-wrap">
+    <div className="flex gap-1 p-1 bg-gray-100 rounded-xl mb-6 flex-wrap">
       {tabs.map((tab) => {
         const Icon = tab.icon;
 
