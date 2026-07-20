@@ -6,6 +6,7 @@ import { mockUserStats } from "../data/mockUserStats";
 import SearchInput from "../components/inputs/SearchInput";
 import UserTable from "../components/table/UserTable";
 import { mockUsers } from "../data/mockUsers";
+import UserDetailsPanel from "../components/cards/UserDetailsPanel";
 
 function Users() {
   const [roleFilter, setRoleFilter] = useState("all");
@@ -57,10 +58,16 @@ function Users() {
         placeholder="Search by name, email, branch or unit..."
       />
 
-      <UserTable
-        users={filteredUsers}
-        selectedUser={selectedUser}
-        onSelect={setSelectedUser}
+      <div className="lg:col-span-2">
+        <UserTable
+          users={filteredUsers}
+          selectedUser={selectedUser}
+          onSelect={setSelectedUser}
+        />
+      </div>
+
+      <UserDetailsPanel
+        selectedUser={filteredUsers.find((u) => u.id === selectedUser)}
       />
     </div>
   );

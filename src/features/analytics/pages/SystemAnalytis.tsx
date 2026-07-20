@@ -8,7 +8,13 @@ import TopReportedCategories from "../components/card/TopReportedCategories";
 import { topCategories } from "../data/topCategories";
 import BranchPerformanceOverview from "../components/charts/BranchPerformanceOverview";
 import { byBranch } from "../data/branchPerformance";
+import CaseTypeDistributionCard from "../components/charts/CaseTypeDistributionCard";
+import CasesBySeverityCard from "../components/charts/CasesBySeverityCard";
+import SLAComplianceCard from "../components/charts/SLAComplianceCard";
+import { bySeverity, byType } from "../../dashboard/hr/data/dashboardData";
+import { slaByType } from "../data/slaByType";
 const LAPO_ORANGE = "#F97316";
+const LAPO_GREEN = "#22C55E";
 
 const stats = [
   {
@@ -75,8 +81,21 @@ function SystemAnalytis() {
 
       <MonthlyTrendChart data={monthlyTrend} />
 
-        <BranchPerformanceOverview branches={byBranch} />
-        
+      {/* Row 2 */}
+      <div className="grid md:grid-cols-3 gap-5 mb-5">
+        <CaseTypeDistributionCard data={byType} />
+
+        <CasesBySeverityCard data={bySeverity} />
+
+        <SLAComplianceCard
+          data={slaByType}
+          target={85}
+          successColor={LAPO_GREEN}
+        />
+      </div>
+
+      <BranchPerformanceOverview branches={byBranch} />
+
       <TopReportedCategories categories={topCategories} />
     </div>
   );
