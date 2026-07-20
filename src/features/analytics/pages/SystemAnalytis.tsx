@@ -1,5 +1,49 @@
 import { Download } from "lucide-react";
 
+import { BarChart2, ShieldCheck, Clock, TrendingUp } from "lucide-react";
+import StatCard from "../components/card/StatCard";
+import MonthlyTrendChart from "../components/charts/MonthlyTrendChart";
+import { monthlyTrend } from "../data/monthlyTrend";
+import TopReportedCategories from "../components/card/TopReportedCategories";
+import { topCategories } from "../data/topCategories";
+import BranchPerformanceOverview from "../components/charts/BranchPerformanceOverview";
+import { byBranch } from "../data/branchPerformance";
+const LAPO_ORANGE = "#F97316";
+
+const stats = [
+  {
+    label: "Total Cases",
+    value: 20,
+    sub: `4 open . 6 closed`,
+    color: "#4F46E5",
+    bg: "#EEF2FF",
+    icon: BarChart2,
+  },
+  {
+    label: "SLA Compliance",
+    value: "30%",
+    sub: "14 breaches",
+    color: "#DC2626",
+    bg: "#FEF2F2",
+    icon: ShieldCheck,
+  },
+  {
+    label: "Avg Resolution",
+    value: "8.2 days",
+    sub: "target < 14 days",
+    color: LAPO_ORANGE,
+    bg: "#FFF4EA",
+    icon: Clock,
+  },
+  {
+    label: "Anonymous Rate",
+    value: "20%",
+    sub: "4 of 20 reports",
+    color: "#7C3AED",
+    bg: "#F5F3FF",
+    icon: TrendingUp,
+  },
+];
 
 function SystemAnalytis() {
   const year = new Date().getFullYear();
@@ -22,6 +66,18 @@ function SystemAnalytis() {
           Export Report
         </button>
       </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        {stats.map((stat) => (
+          <StatCard key={stat.label} {...stat} />
+        ))}
+      </div>
+
+      <MonthlyTrendChart data={monthlyTrend} />
+
+        <BranchPerformanceOverview branches={byBranch} />
+        
+      <TopReportedCategories categories={topCategories} />
     </div>
   );
 }
