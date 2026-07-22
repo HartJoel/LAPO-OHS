@@ -4,6 +4,8 @@ import { hrcases } from "../../mockCases";
 import type { CaseStatus, CaseType, Severity } from "../../../../types";
 import HRCasesTable from "../../components/table/HRCasesTable";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../../../store/authStore";
+import CaseManagementHeader from "../../components/CaseManagementHeader";
 
 function Cases() {
   const navigate = useNavigate();
@@ -12,6 +14,20 @@ function Cases() {
   const [typeFilter, setTypeFilter] = useState<CaseType | "All">("All");
   const [severityFilter, setSeverityFilter] = useState<Severity | "All">("All");
   const [sortBy, setSortBy] = useState<"date" | "severity" | "sla">("date");
+  const [unitFilter, setUnitFilter] = useState("All");
+
+  const units = [
+    "All",
+    "Safety",
+    "Health & Ergonomics",
+    "Harassment & Conduct",
+    "Environmental & Facility",
+    "Security & Theft",
+    "Legal & Compliance",
+    "Client & Vendor",
+  ];
+
+  const { user } = useAuthStore();
 
   const filtered = hrcases.filter((c) => {
     const matchesSearch =
@@ -25,33 +41,72 @@ function Cases() {
 
     return matchesSearch && matchesStatus && matchesType;
   });
+
+  const role = user?.role;
+
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <div className="mb-6">
-        <h1
-          className="text-gray-900 mb-1"
-          style={{ fontSize: "22px", fontWeight: 700 }}
-        >
-          Case Management
-        </h1>
-        <p className="text-gray-500 text-sm">
-          {hrcases.length} total cases across all units and branches
-        </p>
-      </div>
-
-      <CaseFilters
-        search={search}
-        onSearchChange={setSearch}
-        statusFilter={statusFilter}
-        onStatusChange={setStatusFilter}
-        typeFilter={typeFilter}
-        onTypeChange={setTypeFilter}
-        severityFilter={severityFilter}
-        onSeverityChange={setSeverityFilter}
-        sortBy={sortBy}
-        onSortChange={setSortBy}
-        resultCount={filtered.length}
+      <CaseManagementHeader
+        totalCases={hrcases.length}
+        assignedCases={hrcases.length}
+        unit={user?.department}
+        branch={user?.branch}
+        unassignedCount={
+          hrcases.filter(
+            (c) => !c.handlerName && !["Resolved", "Closed"].includes(c.status),
+          ).length
+        }
+        escalatedCount={4}
       />
+      {role === "hr" && (
+        <CaseFilters
+          role="incident_manager"
+          search={search}
+          onSearchChange={setSearch}
+          statusFilter={statusFilter}
+          onStatusChange={setStatusFilter}
+          typeFilter={typeFilter}
+          onTypeChange={setTypeFilter}
+          severityFilter={severityFilter}
+          onSeverityChange={setSeverityFilter}
+          sortBy={sortBy}
+          onSortChange={setSortBy}
+          resultCount={filtered.length}
+        />
+      )}
+
+      {role === "unit_head" && (
+        <CaseFilters
+          role="unit_head"
+          search={search}
+          onSearchChange={setSearch}
+          statusFilter={statusFilter}
+          onStatusChange={setStatusFilter}
+          typeFilter={typeFilter}
+          onTypeChange={setTypeFilter}
+          severityFilter={severityFilter}
+          onSeverityChange={setSeverityFilter}
+          resultCount={filtered.length}
+        />
+      )}
+
+      {role === "sustainability" && (
+        <CaseFilters
+          role="sustainability"
+          search={search}
+          onSearchChange={setSearch}
+          statusFilter={statusFilter}
+          onStatusChange={setStatusFilter}
+          typeFilter={typeFilter}
+          onTypeChange={setTypeFilter}
+          severityFilter={severityFilter}
+          onSeverityChange={setSeverityFilter}
+          unitFilter={unitFilter}
+          onUnitChange={setUnitFilter}
+          units={units}
+          resultCount={filtered.length}
+        />
+      )}
 
       <HRCasesTable
         cases={filtered}
