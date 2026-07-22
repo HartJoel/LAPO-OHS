@@ -21,6 +21,7 @@ export const getStatusBadge = (status?: CaseStatus) => {
       return "bg-gray-50 text-gray-600";
   }
 };
+
 export const getSeverityBadge = (severity?: Severity) => {
   switch (severity) {
     case "Low":

@@ -29,7 +29,7 @@ const tabs = [
 
 export default function CaseTabs({ activeTab, onChange }: Props) {
   return (
-    <div className="flex gap-1 mb-4 bg-gray-200 p-1 rounded-xl w-fit">
+    <div className="flex gap-1 mb-4 bg-gray-100 p-1 rounded-xl w-fit">
       {tabs.map((tab) => (
         <button
           key={tab.key}

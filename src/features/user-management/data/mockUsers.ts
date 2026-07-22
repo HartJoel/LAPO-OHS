@@ -3,10 +3,10 @@ import type { User } from "../types/user";
 export const mockUsers: User[] = [
   {
     id: "1",
-    initials: "AO",
     name: "Amaka Okafor",
     email: "amaka.okafor@lapo.ng",
     role: "employee",
+    jobTitle: "Operations Officer",
     unit: "Operations",
     branch: "Lagos",
     submittedCases: 4,
@@ -14,10 +14,10 @@ export const mockUsers: User[] = [
   },
   {
     id: "2",
-    initials: "CN",
     name: "Chidi Nwosu",
     email: "chidi.nwosu@lapo.ng",
     role: "hr",
+    jobTitle: "HR Business Partner",
     unit: "Human Resources",
     branch: "Head Office",
     submittedCases: 0,

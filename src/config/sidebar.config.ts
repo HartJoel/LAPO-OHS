@@ -26,7 +26,7 @@ export const sidebarConfig: Record<UserRole, NavItem[]> = {
 
   unit_head: [
     { label: "Dashboard", path: "/dashboard", icon: "ti-home" },
-    { label: "Team cases", path: "/team-cases", icon: "ti-users" },
+    { label: "Team cases", path: "/cases", icon: "ti-users" },
   ],
 
   facilities: [

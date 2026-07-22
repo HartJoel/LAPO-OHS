@@ -6,31 +6,31 @@ const LAPO_GREEN = "#009D4C";
 
 export const stats = [
   {
-    label: "Total Team Cases",
+    label: "Total Cases",
     value: 10,
     icon: FolderOpen,
-    color: "#4F46E5",
+    color: "#6366f1",
     bg: "#EEF2FF",
   },
   {
-    label: "Open Cases",
+    label: "Awaiting Assignment",
     value: 8,
-    icon: Clock,
+    icon: AlertTriangle,
     color: LAPO_ORANGE,
     bg: "#FFF4EA",
   },
   {
-    label: "Resolved / Closed",
+    label: "Assigned & Active",
     value: 2,
-    icon: CheckCircle,
+    icon: Clock,
     color: LAPO_GREEN,
     bg: "#EDFBF3",
   },
   {
-    label: "SLA Breaches",
+    label: "Resolved / Closed",
     value: 8,
-    icon: AlertTriangle,
-    color: "#DC2626",
+    icon: CheckCircle,
+    color: "LAPO_GREEN",
     bg: "#FEF2F2",
   },
 ];

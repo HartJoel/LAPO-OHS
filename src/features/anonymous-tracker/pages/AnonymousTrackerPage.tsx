@@ -11,6 +11,10 @@ import InvestigatingStage from "../components/stages/InvestigatingStage";
 import ResolvedStage from "../components/stages/ResolvedStage";
 import ClosedStage from "../components/stages/ClosedStage";
 import type { Case } from "../../shared/types";
+import CaseInformationCard from "../components/CaseInformationCard";
+import CaseHandlerMessagesCard, {
+  type CaseHandlerMessage,
+} from "../components/CaseHandlerMessagesCard";
 
 const LAPO_GREEN = "#22C55E";
 
@@ -27,6 +31,18 @@ const MOCK_CASES: Case[] = [
     status: "Investigating",
     severity: "Medium",
     type: "health",
+  },
+];
+
+const mockMessages: CaseHandlerMessage[] = [
+  {
+    id: "1",
+    from: "handler",
+    sender: "Case Handler",
+    role: "HR",
+    timestamp: "2026-04-04T09:00:00",
+    content:
+      "This is a critical matter and will be treated with the utmost urgency and confidentiality. A dedicated HR officer has been assigned. Investigation will begin immediately. Your anonymity is fully protected.",
   },
 ];
 
@@ -64,6 +80,13 @@ function AnonymousTrackerPage() {
 
       setLoading(false);
     }, 800); // simulate API delay
+  };
+
+  const handleSendMessage = (message: string) => {
+    console.log("Reporter message:", message);
+
+    // TODO: Call your API here later
+    // await sendMessage(token, message);
   };
 
   return (
@@ -115,7 +138,29 @@ function AnonymousTrackerPage() {
             <>
               <CaseStatusTimeline currentStatus={result.status} />
 
-              {result.status === "Logged" && <LoggedStage />}
+              {searched && result && (
+                <>
+                  <CaseInformationCard
+                    incidentDate="2026-04-04"
+                    submittedDate="2026-04-05"
+                    status={result.status}
+                    handlerName="Chidi Nwosu"
+                    routing={{
+                      primary: "People & Culture",
+                      auxiliary: "Legal",
+                    }}
+                  />
+
+                  <div className="mt-5">
+                    <CaseHandlerMessagesCard
+                      messages={mockMessages}
+                      status={result.status}
+                      loading={loading}
+                      onSendMessage={handleSendMessage}
+                    />
+                  </div>
+                </>
+              )}
 
               {result.status === "Under Review" && <UnderReviewStage />}
 
