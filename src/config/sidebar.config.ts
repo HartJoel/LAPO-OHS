@@ -21,7 +21,7 @@ export const sidebarConfig: Record<UserRole, NavItem[]> = {
 
   sustainability: [
     { label: "Dashboard", path: "/dashboard", icon: "ti-home" },
-    { label: "Escalated Cases", path: "/cases", icon: "ti-briefcase" },
+    { label: "All Cases", path: "/cases", icon: "ti-briefcase" },
   ],
 
   unit_head: [
@@ -52,7 +52,7 @@ export const sidebarConfig: Record<UserRole, NavItem[]> = {
 // Human-readable role labels for the sidebar header
 export const roleLabels: Record<UserRole, string> = {
   employee: "Employee",
-  hr: "HR & Compliance",
+  hr: "Incident Manager",
   unit_head: "Unit Head",
   facilities: "Facilities & HSE",
   system_admin: "System Admin",

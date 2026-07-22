@@ -14,7 +14,7 @@ export const ELEVATED_ROLES: UserRole[] = [
 // Human-readable labels for each role
 export const ROLE_LABELS: Record<UserRole, string> = {
   employee: "Employee",
-  hr: "HR & Compliance",
+  hr: "Incident Manager",
   unit_head: "Unit Head",
   facilities: "Facilities & HSE",
   system_admin: "System Admin",

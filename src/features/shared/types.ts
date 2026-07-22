@@ -1,3 +1,4 @@
+import type { StatsRecording } from "framer-motion";
 import type { CaseStatus, CaseType, Severity, SLAStatus } from "../../types";
 
 // shared/types.ts — add missing fields, fix escalated type
@@ -11,6 +12,7 @@ export interface Case {
   location?: string;
   incidentDate?: string;
   handlerName?: string | null;
+  primaryUnit?: string;
   
 
   status: CaseStatus;

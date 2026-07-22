@@ -1,10 +1,10 @@
 import {
   AlertTriangle,
+  CheckCircle,
   Clock,
   FolderOpen,
-  Layers,
-  TrendingUp,
 } from "lucide-react";
+import type { Case } from "../../../shared/types";
 
 const LAPO_ORANGE = "#EC8020";
 const LAPO_GREEN = "#009D4C";
@@ -13,37 +13,30 @@ export const stats = [
   {
     label: "Total Cases",
     value: 20,
-    icon: Layers,
-    color: "#4F46E5",
+    icon: FolderOpen,
+    color: "#6366f1",
     bg: "#EEF2FF",
   },
   {
-    label: "Open",
+    label: "Active",
     value: 12,
-    icon: FolderOpen,
+    icon: Clock,
     color: LAPO_ORANGE,
     bg: "#FFF4EA",
   },
   {
-    label: "Critical Open",
+    label: "Pending Attestation",
     value: 3,
     icon: AlertTriangle,
     color: "#DC2626",
     bg: "#FEF2F2",
   },
   {
-    label: "Escalated",
+    label: "Resolved / Closed",
     value: 1,
-    icon: TrendingUp,
-    color: "#DC2626",
+    icon: CheckCircle,
+    color: "LAPO_GREEN",
     bg: "#FEF2F2",
-  },
-  {
-    label: "Pending Attestation",
-    value: 1,
-    icon: Clock,
-    color: "#D97706",
-    bg: "#FFFBEB",
   },
 ];
 
@@ -261,5 +254,120 @@ export const kpiData = [
     value: "50%",
     target: "< 3",
     ok: false,
+  },
+];
+
+
+export const activeCases: Case[] = [
+  {
+    id: "OHS-2026-001",
+    status: "Under Review",
+    type: "Health & Ergonomics",
+    severity: "High",
+    category: "Poor office ventilation",
+    branch: "Lagos Island Branch",
+    reporterName: "Amaka Okafor",
+    submittedDate: "2026-04-10",
+    sla: "SLA Breached",
+    messages: [
+      {
+        id: "1",
+        from: "reporter",
+        senderName: "Amaka Okafor",
+        content: "Any update?",
+        timestamp: "2026-04-11",
+      },
+    ],
+  },
+  {
+    id: "OHS-2026-002",
+    status: "Investigating",
+    type: "Harassment & Conduct",
+    severity: "High",
+    category: "Verbal harassment",
+    branch: "Surulere Branch",
+    isAnonymous: true,
+    submittedDate: "2026-04-10",
+    sla: "SLA Breached",
+    messages: [],
+  },
+];
+
+
+export const resolvedCases: Case[] = [
+  {
+    id: "OHS-2026-004",
+    status: "Resolved",
+    type: "Environmental & Facility",
+    severity: "Medium",
+    category: "Faulty facility equipment",
+    branch: "Abuja Main Branch",
+    submittedDate: "2026-04-12",
+    sla: "Within SLA",
+  },
+  {
+    id: "OHS-2026-008",
+    status: "Closed",
+    type: "Harassment & Conduct",
+    severity: "High",
+    category: "Bullying",
+    branch: "Lagos Island Branch",
+    submittedDate: "2026-04-12",
+    sla: "Within SLA",
+  },
+  {
+    id: "OHS-2026-010",
+    status: "Resolved",
+    type: "Health & Ergonomics",
+    severity: "Low",
+    category: "Congested office space",
+    branch: "Ibadan Branch",
+    submittedDate: "2026-04-12",
+    sla: "Within SLA",
+  },
+  {
+    id: "OHS-2026-013",
+    status: "Resolved",
+    type: "Environmental & Facility",
+    severity: "Medium",
+    category: "Faulty office equipment",
+    branch: "Port Harcourt Branch",
+    submittedDate: "2026-04-12",
+    sla: "Within SLA",
+  },
+  {
+    id: "OHS-2026-015",
+    status: "Closed",
+    type: "Health & Ergonomics",
+    severity: "Medium",
+    category: "Poor office ventilation",
+    branch: "Abuja Main Branch",
+    submittedDate: "2026-04-12",
+    sla: "Within SLA",
+  },
+];
+
+export const pendingAttestationCases: Case[] = [
+  {
+    id: "OHS-2026-018",
+    status: "Resolved",
+    severity: "Medium",
+    type: "Health & Ergonomics",
+    category: "Back pain complaint",
+    branch: "Lagos Island Branch",
+    pendingAttestation: true,
+    submittedDate: "2026-04-14",
+    sla: "Within SLA",
+  },
+  {
+    id: "OHS-2026-020",
+    status: "Resolved",
+    severity: "High",
+    type: "Safety",
+    category: "Chemical spill",
+    branch: "Abuja Main Branch",
+    pendingAttestation: true,
+    submittedDate: "2026-04-14",
+    sla: "Within SLA",
   },
 ];
