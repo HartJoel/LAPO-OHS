@@ -11,6 +11,7 @@ import CasesByUnitCard from "../components/CasesByUnitCard";
 import { escalatedCases, incidentTypeData, unitData } from "../mock/data";
 import IncidentTypeDistributionCard from "../components/IncidentTypeDistributionCard";
 import EscalatedCasesTable from "../components/tables/EscalatedCasesTable";
+import CriticalAlertsBanner from "../components/CriticalAlertsBanner";
 
 const LAPO_ORANGE = "#EC8020";
 const LAPO_GREEN = "#009D4C";
@@ -88,6 +89,13 @@ function SustainabilityDashboard({ user }: Props) {
           </div>
         </div>
       </div>
+
+      <CriticalAlertsBanner
+        escalatedCount={escalatedCases.length}
+        breachedCount={incidentTypeData.length}
+        onReviewEscalated={() => navigate("/cases?filter=escalated")}
+        onViewBreached={() => navigate("/cases")}
+      />
 
       <StatCards stats={stats} className="mb-6" />
 

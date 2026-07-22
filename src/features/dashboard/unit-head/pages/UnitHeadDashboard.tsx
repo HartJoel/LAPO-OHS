@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import PendingAssignmentCard from "../components/cards/PendingAssignmentCard";
 import TeamWorkloadCard from "../components/cards/TeamWorkloadCard";
 import RecentlyAssignedCard from "../components/cards/RecentlyAssignedCard";
+import UnassignedAlertBanner from "../components/UnassignedAlertBanner";
 interface Props {
   user: User;
 }
@@ -54,8 +55,9 @@ function UnitHeadDashboard({ user }: Props) {
         </div>
       </div>
 
-      <StatCards stats={stats} className="mb-6" />
+      <UnassignedAlertBanner count={5} onViewAll={() => navigate("/cases")} />
 
+      <StatCards stats={stats} className="mb-6" />
       <div className="grid grid-cols-3 gap-5">
         <PendingAssignmentCard
           cases={pendingAssignments.filter((c) => !c.assignedTo)}
