@@ -1,5 +1,6 @@
 import { AlertTriangle, CheckCircle, Clock, FolderOpen } from "lucide-react";
 import type { TeamCase } from "../components/table/TeamCasesTable";
+import type { Case } from "../../../shared/types";
 
 const LAPO_ORANGE = "#EC8020";
 const LAPO_GREEN = "#009D4C";
@@ -35,130 +36,107 @@ export const stats = [
   },
 ];
 
-export const slaBreaches = [
-  {
-    id: "OHS-2026-001",
-    primary: "OHS-2026-001",
-    secondary: "High",
-  },
-  {
-    id: "OHS-2026-002",
-    primary: "OHS-2026-002",
-    secondary: "High",
-    tertiary: "Surulere",
-  },
+
+
+export const pendingAssignments: Case[] = [
   {
     id: "OHS-2026-003",
-    primary: "OHS-2026-003",
-    secondary: "Medium",
-  },
-  {
-    id: "OHS-2026-005",
-    primary: "OHS-2026-005",
-    secondary: "High",
-  },
-  {
-    id: "OHS-2026-006",
-    primary: "OHS-2026-006",
-    secondary: "Medium",
+    type: "Health & Ergonomics",
+    severity: "Medium",
+    category: "Chair-related body pain",
+    branch: "Lagos Island Branch",
+    submittedDate: "2026-04-10",
+    status: "Logged",
+    sla: "SLA Breached",
   },
   {
     id: "OHS-2026-007",
-    primary: "OHS-2026-007",
-    secondary: "Critical",
+    type: "Environmental & Facility",
+    severity: "Critical",
+    category: "Chemical pollution",
+    branch: "Abuja Main Branch",
+    submittedDate: "2026-04-10",
+    status: "Logged",
+    sla: "SLA Breached",
   },
   {
-    id: "OHS-2026-009",
-    primary: "OHS-2026-009",
-    secondary: "Medium",
+    id: "OHS-2026-012",
+    type: "Environmental & Facility",
+    severity: "Medium",
+    category: "Faulty facility equipment",
+    branch: "Lagos Island Branch",
+    submittedDate: "2026-04-11",
+    status: "Logged",
+    sla: "SLA Breached",
+  },
+  {
+    id: "OHS-2026-016",
+    type: "Safety",
+    severity: "Critical",
+    category: "Slips, trips, and falls",
+    branch: "Port Harcourt Branch",
+    submittedDate: "2026-04-10",
+    status: "Logged",
+    sla: "SLA Breached",
   },
 ];
 
-export const bySeverity = [
-  { name: "Critical", value: 5, fill: "#DC2626" },
-  { name: "High", value: 8, fill: LAPO_ORANGE },
-  { name: "Medium", value: 7, fill: "#F59E0B" },
-  { name: "Low", value: 9, fill: LAPO_GREEN },
-];
 
-export const agingData = [
+
+
+export interface IncidentManagerWorkload {
+  id: string;
+  name: string;
+  initials: string;
+  active: number;
+  total: number;
+}
+
+export const workload: IncidentManagerWorkload[] = [
   {
-    id: "OHS-2026-001",
-    days: 12,
+    id: "im-1",
+    name: "Sarah Johnson",
+    initials: "SJ",
+    active: 8,
+    total: 21,
   },
   {
-    id: "OHS-2026-005",
-    days: 8,
+    id: "im-2",
+    name: "Michael Obi",
+    initials: "MO",
+    active: 5,
+    total: 18,
   },
   {
-    id: "OHS-2026-003",
-    days: 2,
-  },
-  {
-    id: "OHS-2026-003",
-    days: 2,
-  },
-  {
-    id: "OHS-2026-005",
-    days: 4,
-  },
-  {
-    id: "OHS-2026-009",
-    days: 4,
-  },
-  {
-    id: "OHS-2026-004",
-    days: 2,
+    id: "im-3",
+    name: "Grace Eze",
+    initials: "GE",
+    active: 6,
+    total: 14,
   },
 ];
 
-export const teamMembers = [
-  {
-    name: "Amaka Okafor",
-    role: "Operations Officer",
-    cases: 4,
-  },
-  {
-    name: "Ngozi Adebayo",
-    role: "Senior Operations Officer",
-    cases: 4,
-  },
-];
-
-export const teamCases: TeamCase[] = [
+export const recentlyAssignedCases: Case[] = [
   {
     id: "OHS-2026-021",
-    category: "Poor office ventilation",
-    status: "Under Review",
-    severity: "High",
-    submittedDate: "2026-04-14",
+    status: "Logged",
+    type: "Safety",
+    severity: "Critical",
+    category: "Electrical fire",
+    branch: "Abuja Main Branch",
+    submittedDate: "2026-04-12",
+    sla: "Within SLA",
+    handlerName: "Sarah Johnson",
   },
   {
     id: "OHS-2026-022",
-    category: "Verbal harassment",
-    status: "Investigating",
-    severity: "Critical",
-    submittedDate: "2026-04-13",
-  },
-  {
-    id: "OHS-2026-023",
-    category: "Faulty facility equipment",
     status: "Logged",
+    type: "Health & Ergonomics",
     severity: "Medium",
+    category: "Back pain complaint",
+    branch: "Lagos Island Branch",
     submittedDate: "2026-04-12",
-  },
-  {
-    id: "OHS-2026-024",
-    category: "Chair-related body pain",
-    status: "Resolved",
-    severity: "Low",
-    submittedDate: "2026-04-10",
-  },
-  {
-    id: "OHS-2026-025",
-    category: "Chemical pollution",
-    status: "Escalated",
-    severity: "Critical",
-    submittedDate: "2026-04-09",
+    sla: "Within SLA",
+    handlerName: "Grace Eze",
   },
 ];

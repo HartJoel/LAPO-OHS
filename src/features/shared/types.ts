@@ -5,12 +5,13 @@ export interface Case {
   id: string;
   token?: string;
   title?: string;
-  type: CaseType;
+  type?: CaseType;
   category: string;
   branch: string;
   location?: string;
   incidentDate?: string;
   handlerName?: string | null;
+  
 
   status: CaseStatus;
   severity: Severity;

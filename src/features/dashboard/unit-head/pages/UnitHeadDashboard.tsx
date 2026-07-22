@@ -1,52 +1,20 @@
-import { TrendingUp, TriangleAlert, Users } from "lucide-react";
-import type { CaseStatus, Severity, User } from "../../../../types";
+import type { User } from "../../../../types";
 import StatCards from "../../shared";
-import ProgressCard from "../components/cards/ProgressCard";
-import AlertCard from "../../shared/components/AlertCard";
-import CaseTypeChart from "../components/charts/CaseTypeChart";
-import { byStatus, byType } from "../../hr/data/dashboardData";
-import ReportChart from "../components/charts/ReportChart";
-import {
-  agingData,
-  bySeverity,
-  slaBreaches,
-  stats,
-  teamCases,
-  teamMembers,
-} from "../data/data";
-import CaseAgingCard from "../components/cards/CaseAgingCard";
-import TeamMembersCard from "../components/cards/TeamMembersCard";
-import TeamCasesTable from "../components/table/TeamCasesTable";
-import { useNavigate } from "react-router-dom";
 
+import {
+  pendingAssignments,
+  recentlyAssignedCases,
+  stats,
+  workload,
+} from "../data/data";
+
+import { useNavigate } from "react-router-dom";
+import PendingAssignmentCard from "../components/cards/PendingAssignmentCard";
+import TeamWorkloadCard from "../components/cards/TeamWorkloadCard";
+import RecentlyAssignedCard from "../components/cards/RecentlyAssignedCard";
 interface Props {
   user: User;
 }
-
-const getSLAStatus = (
-  submittedDate: string,
-  severity: Severity,
-  status: CaseStatus,
-) => {
-  if (status === "Resolved" || status === "Closed") {
-    return {
-      label: "Completed",
-      color: "green" as const,
-    };
-  }
-
-  if (status === "Escalated") {
-    return {
-      label: "Escalated",
-      color: "amber" as const,
-    };
-  }
-
-  return {
-    label: "SLA Breached",
-    color: "red" as const,
-  };
-};
 
 const LAPO_ORANGE = "#EC8020";
 
@@ -88,46 +56,21 @@ function UnitHeadDashboard({ user }: Props) {
 
       <StatCards stats={stats} className="mb-6" />
 
-      <ProgressCard
-        title="SLA Compliance Rate"
-        subtitle="Target: > 85%"
-        value={70}
-        target={85}
-        icon={<TrendingUp size={18} />}
-      />
-
-      <AlertCard
-        title="SLA Breaches in Your Team"
-        count={slaBreaches.length}
-        color="red"
-        icon={<TriangleAlert size={16} />}
-        route="/cases"
-        items={slaBreaches.map((breach) => ({
-          id: breach.id,
-          primary: breach.primary,
-          secondary: breach.secondary,
-          tertiary: breach.tertiary,
-        }))}
-      />
-
-      {/* Charts Row 1 */}
-      <div className="grid md:grid-cols-3 gap-5 mt-6 mb-5">
-        <ReportChart title="Cases by Status" data={bySeverity} />
-        <CaseTypeChart title="Cases by Report Type" data={byType} />
-        <CaseAgingCard title="Aging Open Cases" data={agingData} />
-      </div>
-
-      {/* Team Summary + Recent Cases */}
-      <div className="grid md:grid-cols-3 gap-5">
-        <TeamMembersCard title="Team Members" members={teamMembers} />
-
-        <TeamCasesTable
-          title="Recent Team Cases"
-          cases={teamCases}
-          viewAll={() => navigate("/manager/team-cases")}
-          openCase={(id) => navigate(`/manager/cases/${id}`)}
-          getSLAStatus={getSLAStatus}
+      <div className="grid grid-cols-3 gap-5">
+        <PendingAssignmentCard
+          cases={pendingAssignments.filter((c) => !c.assignedTo)}
+          onCaseClick={(id) => navigate(`/manager/cases/${id}`)}
+          onViewMore={() => navigate("/manager/team-cases")}
         />
+
+        <div className="flex flex-col gap-4">
+          <TeamWorkloadCard workload={workload} />
+
+          <RecentlyAssignedCard
+            cases={recentlyAssignedCases}
+            onCaseClick={(id) => navigate(`/manager/cases/${id}`)}
+          />
+        </div>
       </div>
     </div>
   );
