@@ -30,6 +30,8 @@ const getInitials = (name: string) =>
 function UnitHeadDashboard({ user }: Props) {
   const navigate = useNavigate();
 
+  
+
   return (
     <div className="p-6 max-w-6xl mx-auto">
       {/* Header */}
@@ -61,8 +63,8 @@ function UnitHeadDashboard({ user }: Props) {
       <div className="grid grid-cols-3 gap-5">
         <PendingAssignmentCard
           cases={pendingAssignments.filter((c) => !c.assignedTo)}
-          onCaseClick={(id) => navigate(`/manager/cases/${id}`)}
-          onViewMore={() => navigate("/manager/team-cases")}
+          onCaseClick={(id) => navigate(`/cases/${id}`)}
+          onViewMore={() => navigate("/team-cases")}
         />
 
         <div className="flex flex-col gap-4">

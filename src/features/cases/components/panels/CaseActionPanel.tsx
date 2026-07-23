@@ -5,7 +5,7 @@ import {
   ClipboardList,
   RefreshCw,
 } from "lucide-react";
-import type { Case } from "../../shared/types";
+import type { Case } from "../../../shared/types";
 
 const LAPO_GREEN = "#22C55E";
 const LAPO_ORANGE = "#F97316";
@@ -80,6 +80,10 @@ export default function CaseActionPanel({ caseData, onStatusChange }: Props) {
   const handleReopen = () => {
     updateStatus("Investigating", "Investigation reopened.");
   };
+
+   if (caseData.status === "Closed") {
+    return null;
+  }
 
   return (
     <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-5 mb-5">
