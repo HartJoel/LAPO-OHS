@@ -7,23 +7,26 @@ import AdminDashboard from "./system-admin/pages/AdminDashboard";
 import UnitHeadDashboard from "./unit-head/pages/UnitHeadDashboard";
 
 export default function DashboardPage() {
-  const user = useAuthStore((s) => s.user);
+  const { user, activeRole } = useAuthStore();
 
-  if (!user) return null;
+  if (!user || !activeRole) return null;
 
-  // One route (/dashboard), five different views.
-  // The role from Zustand decides which component renders.
-  switch (user.role) {
+  switch (activeRole) {
     case "employee":
       return <EmployeeDashboard user={user} />;
+
     case "hr":
       return <HRDashboard user={user} />;
+
     case "sustainability":
       return <SustainabilityDashboard user={user} />;
+
     case "unit_head":
       return <UnitHeadDashboard user={user} />;
+
     case "facilities":
       return <FacilitiesDashboard user={user} />;
+
     case "system_admin":
       return <AdminDashboard user={user} />;
   }
